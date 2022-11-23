@@ -1,0 +1,31 @@
+<h1>Cadastro</h1>
+
+<mat-card class="card-cadastro">
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Id</mat-label>
+      <input matInput [(ngModel)]="clienteAtual.id" placeholder="Nome do cliente">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Idade</mat-label>
+      <input matInput [(ngModel)]="clienteAtual.idade">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="clienteAtual.nome"><br>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Telefone</mat-label>
+      <input matInput [(ngModel)]="clienteAtual.telefone"><br>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="clienteAtual.email"><br>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="inserirOuAtualizarCliente()">{{nomeBotao}}</button>
+  </mat-card-actions>
+</mat-card>
+
