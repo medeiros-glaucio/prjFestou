@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Cliente} from '../../shared/model/cliente';
 import {Router} from '@angular/router';
 import {ClienteService} from '../../shared/services/cliente.service';
+import {ClienteFirestoreService} from "../../shared/services/cliente-firestore.service";
 
 @Component({
   selector: 'app-listagem-cliente',
@@ -11,15 +12,20 @@ import {ClienteService} from '../../shared/services/cliente.service';
 export class ListagemClienteComponent implements OnInit {
 
   clientes: Cliente[];
+  clientesMaioresDeIdade: Cliente[];
 
-  constructor(private roteador: Router, private clienteService: ClienteService) {
+  constructor(private roteador: Router, private clienteService: ClienteFirestoreService) {
     this.clientes = new Array<Cliente>();
+    this.clientesMaioresDeIdade = new Array<Cliente>();
   }
 
   ngOnInit(): void {
     this.clienteService.listar().subscribe(
       clientesRetornados => this.clientes = clientesRetornados
     );
+    this.clientesMaioresDeIdade.listarMaioresDeIdade().subscribe(
+      clientesMaiores => this.clientesMaioresDeIdade = clientesMaiores
+    )
   }
 
   removerCliente(clienteARemover: Cliente): void {

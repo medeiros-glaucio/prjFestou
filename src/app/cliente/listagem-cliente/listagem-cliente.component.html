@@ -27,3 +27,30 @@
     </mat-card-actions>
   </mat-card-content>
 </div>
+
+<h1>Maiores de Idade</h1>
+
+<div fxLayout="row wrap" fxLayout.lt-md="column">
+  <mat-card fxFlex="20" *ngFor="let cliente of clientesMaioresDeIdade" class="card-cliente">
+    <mat-card-header>
+      <mat-icon>person</mat-icon>
+      <mat-card-title>
+        {{cliente.nome}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{cliente.email}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      Idade: {{cliente.idade}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button (click)="removerCliente(cliente)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/editacliente', cliente.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

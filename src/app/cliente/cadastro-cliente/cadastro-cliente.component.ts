@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Cliente} from '../../shared/model/cliente';
 import {ActivatedRoute} from '@angular/router';
 import {ClienteService} from '../../shared/services/cliente.service';
+import {ClienteFirestoreService} from "../../shared/services/cliente-firestore.service";
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -15,8 +16,8 @@ export class CadastroClienteComponent implements OnInit {
   inserindo: boolean = true;
   nomeBotao: string = 'Inserir';
 
-  constructor(private rotaAtual: ActivatedRoute, private clienteService: ClienteService) {
-    this.clienteAtual = new Cliente('', 0, '', '', '');
+  constructor(private rotaAtual: ActivatedRoute, private clienteService: ClienteFirestoreService) {
+    this.clienteAtual = new Cliente('');
     if (rotaAtual.snapshot.paramMap.has('id')) {
       const idParaEdicao = rotaAtual.snapshot.paramMap.get('id');
       if (idParaEdicao) {
