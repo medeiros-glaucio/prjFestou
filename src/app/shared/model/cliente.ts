@@ -7,9 +7,9 @@ export class Cliente {
 
   constructor(id?: string, cliente: Cliente = {}) {
     this.id = id;
-    this.idade = idade;
-    this.nome = nome;
-    this.telefone = telefone;
-    this.email = email;
+    this.idade = cliente.idade;
+    this.nome = cliente.nome;
+    this.telefone = cliente.telefone;
+    this.email = cliente.email;
   }
 }

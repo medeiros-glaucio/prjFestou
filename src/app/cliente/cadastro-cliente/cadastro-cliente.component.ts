@@ -38,7 +38,7 @@ export class CadastroClienteComponent implements OnInit {
       this.clienteService.inserir(this.clienteAtual).subscribe(
         clienteInserido => console.log(clienteInserido)
       );
-      this.clienteAtual = new Cliente('', 0, '', '', '');
+      this.clienteAtual = new Cliente('');
     } else {
       this.clienteService.atualizar(this.clienteAtual).subscribe(
         clienteAtualizado => console.log(clienteAtualizado)

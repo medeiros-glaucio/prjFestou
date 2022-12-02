@@ -3,11 +3,13 @@ import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.co
 import { ListagemClienteComponent } from './listagem-cliente/listagem-cliente.component';
 import {NgMaterialModule} from "../ng-material/ng-material.module";
 import { PipesModule } from '../shared/pipes/pipes.module';
+import { CadastroListagemComponent } from './cadastro-listagem/cadastro-listagem.component';
 
 @NgModule({
   declarations: [
     CadastroClienteComponent,
-    ListagemClienteComponent
+    ListagemClienteComponent,
+    CadastroListagemComponent
   ],
   imports: [
     NgMaterialModule,
@@ -15,7 +17,8 @@ import { PipesModule } from '../shared/pipes/pipes.module';
   ],
   exports: [
     CadastroClienteComponent,
-    ListagemClienteComponent
+    ListagemClienteComponent,
+    CadastroListagemComponent
   ]
 })
 export class ClienteModule { }

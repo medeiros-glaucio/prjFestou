@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Cliente} from '../../shared/model/cliente';
 import {Router} from '@angular/router';
 import {ClienteService} from '../../shared/services/cliente.service';
-import {ClienteFirestoreService} from "../../shared/services/cliente-firestore.service";
+import {ClienteFirestoreService} from '../../shared/services/cliente-firestore.service';
+import {stringifyTask} from "@angular/compiler-cli/ngcc/src/execution/tasks/utils";
 
 @Component({
   selector: 'app-listagem-cliente',
@@ -23,16 +24,17 @@ export class ListagemClienteComponent implements OnInit {
     this.clienteService.listar().subscribe(
       clientesRetornados => this.clientes = clientesRetornados
     );
-    this.clientesMaioresDeIdade.listarMaioresDeIdade().subscribe(
+    this.clienteService.listarMaioresDeIdade().subscribe(
       clientesMaiores => this.clientesMaioresDeIdade = clientesMaiores
     )
   }
 
   removerCliente(clienteARemover: Cliente): void {
-    this.clienteService.apagar(clienteARemover.id).subscribe(
+    let idcliente: string = clienteARemover.id!;
+    this.clienteService.apagar(clienteARemover.id!).subscribe(
       removido => {
         console.log(removido);
-        const indxCliente = this.clientes.findIndex(u => u.id === clienteARemover.id);
+        const indxCliente = this.clientes.findIndex(u => u.id === idcliente);
 
         if (indxCliente > -1) {
           this.clientes.splice(indxCliente, 1);
